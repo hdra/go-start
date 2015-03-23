@@ -8,13 +8,6 @@ import (
     "log"
 )
 
-type weatherData struct{
-    Name string `json:"name"`
-    Main struct {
-        Kelvin float64 `json:"temp"`
-    } `json:"main"`
-}
-
 type weatherProvider interface{
     temperature(city string)(float64, error)
 }
@@ -45,15 +38,8 @@ func main(){
         })
     })
 
-    http.HandleFunc("/hello", hello)
-
     http.ListenAndServe(":8080", nil)
 }
-
-func hello(w http.ResponseWriter, r *http.Request){
-    w.Write([]byte("hello!"))
-}
-
 
 type openWeatherMap struct{}
 
