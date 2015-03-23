@@ -99,7 +99,7 @@ func (w weatherUnderground) temperature(city string)(float64, error){
 
 type multiWeatherProvider []weatherProvider
 
-func (w multiWeatherProvider) temperature(city string, providers ...weatherProvider) (float64, error){
+func (w multiWeatherProvider) temperature(city string) (float64, error){
     sum := 0.0
     for _, provider := range w{
         k, err := provider.temperature(city)
